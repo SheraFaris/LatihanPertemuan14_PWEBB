@@ -1,0 +1,15 @@
+CREATE DATABASE IF NOT EXISTS login_multi_level;
+USE login_multi_level;
+
+CREATE TABLE IF NOT EXISTS users (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  username VARCHAR(50) NOT NULL UNIQUE,
+  password VARCHAR(255) NOT NULL,
+  level ENUM('admin','pegawai','pengurus') NOT NULL
+);
+
+-- Akun contoh (password: 123456)
+INSERT INTO users (username, password, level) VALUES
+('admin',   '$2y$10$u5kqkM5r8u0l8nA4oO0fUO4I8c7Q4mEJqH0pF6wQe4mQm8bTqgG3W', 'admin'),
+('pegawai', '$2y$10$u5kqkM5r8u0l8nA4oO0fUO4I8c7Q4mEJqH0pF6wQe4mQm8bTqgG3W', 'pegawai'),
+('pengurus','$2y$10$u5kqkM5r8u0l8nA4oO0fUO4I8c7Q4mEJqH0pF6wQe4mQm8bTqgG3W', 'pengurus');
